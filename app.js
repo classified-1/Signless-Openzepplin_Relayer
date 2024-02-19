@@ -28,13 +28,13 @@ app.use(cors()); // Enable CORS for all routes (Node App requirement, not relate
   in that setting there is option to create new api key, when new api key created you will also get
   API-SECRECT,save it cause it will show only one time
 */
-const credentials = { apiKey: process.env.MYAPIKEY, apiSecret: process.env.MYAPISECRET }; 
+const credentials = { apiKey: process.env.MYAPIKEY, apiSecret: process.env.MYAPISECRETBNBMAINNET }; 
 const provider = new DefenderRelayProvider(credentials, { speed: 'fast' });
 const web3 = new Web3(provider);
 
 ///feed that API-KEY and API-SECRECT  to Relayer
 const { Relayer } = require('defender-relay-client');
-const relayer = new Relayer({ apiKey: process.env.MYAPIKEY, apiSecret: process.env.MYAPISECRET }); 
+const relayer = new Relayer({ apiKey: process.env.MYAPIKEY, apiSecret: process.env.MYAPISECRETBNBMAINNET }); 
 
 ///Address of contract of which you want to call function and its ABI-CODE
 const CONTRACT_ADDRESS = '0x8d2c70E2B981003f5A77373Ba9F9A5ccD86674aa';
