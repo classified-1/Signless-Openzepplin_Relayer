@@ -60,12 +60,12 @@ const contract = new web3.eth.Contract(ABI, CONTRACT_ADDRESS);
    `/:winner` => as mentioned above it can be anything and can be change 
 
 */
-app.post('/winner/:roomId/:winner', async (req, res) => {
+app.post('/winner/:roomId/:winner/:winningAmount', async (req, res) => {
   const roomId = req.params.roomId;
   const winner = req.params.winner;
-
+  const winningAmount = req.params.winningAmount;
   /// the method of contract you want to call in my case `declareWinner`
-  const encodedData = contract.methods.declareWinner(roomId, winner).encodeABI();
+  const encodedData = contract.methods.declareWinner(roomId, winner,winningAmount).encodeABI();
 
   /*
    This will send transaction(call function) to Our contract on behalf of us, the address that will used
