@@ -34,10 +34,10 @@ const web3 = new Web3(provider);
 
 ///feed that API-KEY and API-SECRECT  to Relayer
 const { Relayer } = require('defender-relay-client');
-const relayer = new Relayer({ apiKey: process.env.MYAPIKEY, apiSecret: process.env.MYAPISECRETBNBTESTNET }); 
+const relayer = new Relayer({ apiKey: process.env.PULSECHAINAPIKEYMAINNET, apiSecret: process.env.PULSECHAINAPISECRETMAINNET }); 
 
 ///Address of contract of which you want to call function and its ABI-CODE
-const CONTRACT_ADDRESS = '0x8dab494222149c72526e72cba39742e798eeb238';
+const CONTRACT_ADDRESS = '0x6953d0dc5532c6257ac0ada6a171daec1f9bf7f0';
 const ABI = [ { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" }, { "inputs": [ { "internalType": "address", "name": "newOwner", "type": "address" } ], "name": "addOwner", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "string", "name": "roomId", "type": "string" }, { "internalType": "address", "name": "winner", "type": "address" } ], "name": "declareWinner", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "getAllOwners", "outputs": [ { "internalType": "address[]", "name": "", "type": "address[]" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "string", "name": "roomId", "type": "string" } ], "name": "getRoom", "outputs": [ { "internalType": "address", "name": "", "type": "address" }, { "internalType": "address", "name": "", "type": "address" }, { "internalType": "bool", "name": "", "type": "bool" }, { "internalType": "uint256", "name": "", "type": "uint256" }, { "internalType": "bool", "name": "", "type": "bool" }, { "internalType": "address", "name": "", "type": "address" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "getRoomIds", "outputs": [ { "internalType": "string[]", "name": "", "type": "string[]" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "string", "name": "roomId", "type": "string" } ], "name": "joinRoom", "outputs": [], "stateMutability": "payable", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "ownerToRemove", "type": "address" } ], "name": "removeOwner", "outputs": [], "stateMutability": "nonpayable", "type": "function" } ]
 
 
