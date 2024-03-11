@@ -37,9 +37,173 @@ const { Relayer } = require('defender-relay-client');
 const relayer = new Relayer({ apiKey: process.env.PULSECHAINAPIKEYMAINNET, apiSecret: process.env.PULSECHAINAPISECRETMAINNET }); 
 
 ///Address of contract of which you want to call function and its ABI-CODE
-const CONTRACT_ADDRESS = '0x6953d0dc5532c6257ac0ada6a171daec1f9bf7f0';
-const ABI = [ { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" }, { "inputs": [ { "internalType": "address", "name": "newOwner", "type": "address" } ], "name": "addOwner", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "string", "name": "roomId", "type": "string" }, { "internalType": "address", "name": "winner", "type": "address" } ], "name": "declareWinner", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "getAllOwners", "outputs": [ { "internalType": "address[]", "name": "", "type": "address[]" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "string", "name": "roomId", "type": "string" } ], "name": "getRoom", "outputs": [ { "internalType": "address", "name": "", "type": "address" }, { "internalType": "address", "name": "", "type": "address" }, { "internalType": "bool", "name": "", "type": "bool" }, { "internalType": "uint256", "name": "", "type": "uint256" }, { "internalType": "bool", "name": "", "type": "bool" }, { "internalType": "address", "name": "", "type": "address" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "getRoomIds", "outputs": [ { "internalType": "string[]", "name": "", "type": "string[]" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "string", "name": "roomId", "type": "string" } ], "name": "joinRoom", "outputs": [], "stateMutability": "payable", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "ownerToRemove", "type": "address" } ], "name": "removeOwner", "outputs": [], "stateMutability": "nonpayable", "type": "function" } ]
-
+const CONTRACT_ADDRESS = '0xDCD9Aa9e530BCeE9f9b6406a4B8858b3235f57e4';
+const ABI = [
+  {
+    "type": "constructor",
+    "name": "",
+    "inputs": [],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "addOwner",
+    "inputs": [
+      {
+        "type": "address",
+        "name": "newOwner",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "clearRooms",
+    "inputs": [],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "declareWinner",
+    "inputs": [
+      {
+        "type": "string",
+        "name": "roomId",
+        "internalType": "string"
+      },
+      {
+        "type": "address",
+        "name": "winner",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "endUnmatchedRoom",
+    "inputs": [
+      {
+        "type": "string",
+        "name": "roomId",
+        "internalType": "string"
+      },
+      {
+        "type": "address",
+        "name": "winner",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "getAllOwners",
+    "inputs": [],
+    "outputs": [
+      {
+        "type": "address[]",
+        "name": "",
+        "internalType": "address[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getRoom",
+    "inputs": [
+      {
+        "type": "string",
+        "name": "roomId",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "address",
+        "name": "",
+        "internalType": "address"
+      },
+      {
+        "type": "address",
+        "name": "",
+        "internalType": "address"
+      },
+      {
+        "type": "bool",
+        "name": "",
+        "internalType": "bool"
+      },
+      {
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
+      },
+      {
+        "type": "bool",
+        "name": "",
+        "internalType": "bool"
+      },
+      {
+        "type": "address",
+        "name": "",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getRoomIds",
+    "inputs": [],
+    "outputs": [
+      {
+        "type": "string[]",
+        "name": "",
+        "internalType": "string[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "joinRoom",
+    "inputs": [
+      {
+        "type": "string",
+        "name": "roomId",
+        "internalType": "string"
+      },
+      {
+        "type": "uint256",
+        "name": "amount",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "payable"
+  },
+  {
+    "type": "function",
+    "name": "removeOwner",
+    "inputs": [
+      {
+        "type": "address",
+        "name": "ownerToRemove",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  }
+]
 
 ///feed that address and abi code to WEB3
 const contract = new web3.eth.Contract(ABI, CONTRACT_ADDRESS);
