@@ -37,7 +37,7 @@ const { Relayer } = require('defender-relay-client');
 const relayer = new Relayer({ apiKey: process.env.PULSECHAINAPIKEYMAINNET, apiSecret: process.env.PULSECHAINAPISECRETMAINNET }); 
 
 ///Address of contract of which you want to call function and its ABI-CODE
-const CONTRACT_ADDRESS = '0xDCD9Aa9e530BCeE9f9b6406a4B8858b3235f57e4';
+const CONTRACT_ADDRESS = '0xa4a09427f6d70551d4701b249888E1e0a5d270F9';
 const ABI = [
   {
     "type": "constructor",
